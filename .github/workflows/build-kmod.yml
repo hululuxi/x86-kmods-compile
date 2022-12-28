@@ -41,7 +41,7 @@ jobs:
     - name: Compile Openwrt
       id: compileopenwrt
       run: |
-        bash <(curl -sS ${{ secrets.script_url_kmod }}) r5s
+        bash <(curl -sS ${{ secrets.script_url_kmod }})
         build_version=$(cat openwrt/hash.txt)
         echo "build_version=$build_version" >> $GITHUB_ENV
 
