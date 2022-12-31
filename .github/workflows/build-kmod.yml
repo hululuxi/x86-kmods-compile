@@ -41,7 +41,7 @@ jobs:
     - name: Compile Openwrt
       id: compileopenwrt
       run: |
-        bash <(curl -sS ${{ secrets.script_url_kmod }})
+        bash <(curl -sS ${{ secrets.script_url_general }}) rc r5s kmod
         build_version=$(cat openwrt/hash.txt)
         echo "build_version=$build_version" >> $GITHUB_ENV
 
@@ -49,4 +49,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: ${{ env.build_version }}
-        path: openwrt/packages.tar.gz
+        path: openwrt/kmod-packages.tar.gz
