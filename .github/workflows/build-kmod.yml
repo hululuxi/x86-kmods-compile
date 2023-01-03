@@ -1,6 +1,14 @@
 name: Build releases
 
 on:
+  workflow_dispatch:
+    inputs:
+      INPUT_TARGET:
+        description: "Target to build x86-64"
+        required: false
+        default: "x86_64/x86/64/linux-amd64/amd64"
+  schedule:
+    - cron: 0 0 * * *
   watch:
     types: started
 
@@ -8,7 +16,7 @@ jobs:
   build:
     if: github.event.repository.owner.id == github.event.sender.id
     name: Build kmod
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
@@ -58,7 +66,7 @@ jobs:
     - name: Compile Openwrt
       id: compileopenwrt
       run: |
-        bash <(curl -sS ${{ secrets.script_url_general }}) rc r5s kmod
+        bash <(curl -sS https://init2.cooluc.com/build.sh) rc x86 kmod
         build_version=$(cat openwrt/hash.txt)
         echo "build_version=$build_version" >> $GITHUB_ENV
 
