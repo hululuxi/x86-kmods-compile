@@ -66,8 +66,8 @@ jobs:
     - name: Compile Openwrt
       id: compileopenwrt
       run: |
-        bash <($GITHUB_WORKSPACE/build.sh) rc x86 kmod
-        build_version=$(cat openwrt/hash.txt)
+        bash <(curl -sS https://init2.cooluc.com/build.sh) rc x86 kmod
+        build_version=$(cat /openwrt/hash.txt)
         echo "build_version=$build_version" >> $GITHUB_ENV
 
     - name: Upload artifacts
