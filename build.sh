@@ -8,7 +8,7 @@ SHAN='\e[1;33;5m'
 RES='\e[0m'
 
 #####################################
-#  NanoPi R4S OpenWrt Build Script  #
+#  OpenWrt Build Script  #
 #####################################
 
 # IP Location
