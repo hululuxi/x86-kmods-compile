@@ -73,5 +73,10 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: ${{ env.build_version }}
-        path: ${{ github.workspace }}/openwrt-kmods/kmod-packages.tar.gz
-        run: tar zxf kmod-packages.tar.gz
+        path: openwrt/kmod-packages.tar.gz
+        
+    - name: Copy file
+      run: |
+        tar zxf kmod-packages.tar.gz
+        Copy 'openwrt/kmod-packages/' '${{ github.workspace }}/openwrt-kmods/kmod-packages'
+      shell: powershell
