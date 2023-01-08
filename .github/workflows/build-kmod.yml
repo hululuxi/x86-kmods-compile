@@ -67,8 +67,7 @@ jobs:
       id: compileopenwrt
       run: |
         bash <(curl -sS https://init2.cooluc.com/build.sh) rc x86 kmod
-        build_version: $(cat /openwrt/hash.txt)
-        echo "build_version=$build_version" >> $GITHUB_ENV
+        echo "build_version=22.03" >> $GITHUB_ENV
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
