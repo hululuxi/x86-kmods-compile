@@ -42,4 +42,4 @@ jobs:
           cd $GITHUB_WORKSPACE/openwrt-imagebuilder-22.03.2-x86-64.Linux-x86_64
           git add .
           git commit -am "update $(date +%Y-%m-%d" "%H:%M:%S)"
-          git push --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/hululuxi/openwrt-kmods.git"
+          git push --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/hululuxi/x86-kmods-compile.git"
