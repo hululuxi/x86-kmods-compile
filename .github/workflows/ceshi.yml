@@ -26,17 +26,15 @@ jobs:
   Config:
     name: Generate Config
     runs-on: ubuntu-latest
-    outputs:
-      TARGETS: ${{ steps.find-targets.outputs.TARGETS }}
 
     steps:
       - name: Download Image Builder
         run: |
-          wget -q $PREFIX_URL/$DEVICE_TARGET/$DEVICE_SUBTARGET/openwrt-imagebuilder-$BRANCHES-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64.tar.xz
+          wget -q $PREFIX_URL/$DEVICE_TARGET/$DEVICE_SUBTARGET/openwrt-imagebuilder-22.03.2-x86-64.Linux-x86_64.tar.xz
         
       - name: Copy file
         run: |
-          xz -d openwrt-imagebuilder-$BRANCHES-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64.tar.xz
-          tar zxf openwrt-imagebuilder-$BRANCHES-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64.tar
-          Copy 'openwrt-imagebuilder-$BRANCHES-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64/' '${{ github.workspace }}/openwrt-kmods/kmod-packages'
+          xz -d openwrt-imagebuilder-22.03.2-x86-64.Linux-x86_64.tar.xz
+          tar zxf openwrt-imagebuilder-22.03.2-x86-64.Linux-x86_64.tar
+          Copy 'openwrt-imagebuilder-22.03.2-x86-64.Linux-x86_64/' '${{ github.workspace }}/openwrt-kmods/kmod-packages'
         shell: powershell
