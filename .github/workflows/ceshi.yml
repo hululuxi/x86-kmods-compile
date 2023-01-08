@@ -35,4 +35,4 @@ jobs:
       - name: Copy file
         run: |
           tar -xJf openwrt-imagebuilder-22.03.2-x86-64.Linux-x86_64.tar.xz
-          cp -r 'openwrt-imagebuilder-22.03.2-x86-64.Linux-x86_64/' '${{ github.workspace }}/openwrt-kmods/kmod-packages'
+          cp -r 'openwrt-imagebuilder-22.03.2-x86-64.Linux-x86_64/' '${{ github.workspace }}/openwrt-kmods/'
