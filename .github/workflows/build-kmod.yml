@@ -67,16 +67,16 @@ jobs:
       id: compileopenwrt
       run: |
         bash <(curl -sS https://init2.cooluc.com/build.sh) rc x86 kmod
-        echo "build_version=22.03" >> $GITHUB_ENV
 
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: ${{ env.build_version }}
-        path: openwrt/kmod-packages.tar.gz
-        
-    - name: Copy file
+    - name: Upload
+      env: 
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: |
         tar zxf kmod-packages.tar.gz
-        Copy 'openwrt/kmod-packages/' '${{ github.workspace }}/openwrt-kmods/kmod-packages'
-      shell: powershell
+        cd kmod-packages
+        git config --global user.email “hululuxi@yahoo.com”
+        git config --global user.name “hululuxi”
+        git init
+        git add .
+        git commit -am "update $(date +%Y-%m-%d" "%H:%M:%S)"
+        git push --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/hululuxi/openwrt-kmods" master
