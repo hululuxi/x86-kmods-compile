@@ -73,5 +73,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: ${{ env.build_version }}
-        path: openwrt/kmod-packages.tar.gz
+        path: ${{ github.workspace }}/openwrt-kmods/kmod-packages.tar.gz
         run: tar zxf kmod-packages.tar.gz
