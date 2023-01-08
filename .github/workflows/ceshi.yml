@@ -37,9 +37,9 @@ jobs:
           tar -xJf openwrt-imagebuilder-22.03.2-x86-64.Linux-x86_64.tar.xz
       - name: Upload
         env: 
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: |
-        cd $GITHUB_WORKSPACE/openwrt-imagebuilder-22.03.2-x86-64.Linux-x86_64
-        git add .
-        git commit -am "update $(date +%Y-%m-%d" "%H:%M:%S)"
-        git push --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/hululuxi/x86-kmods-compile/openwrt-kmods.git"
+          cd $GITHUB_WORKSPACE/openwrt-imagebuilder-22.03.2-x86-64.Linux-x86_64
+          git add .
+          git commit -am "update $(date +%Y-%m-%d" "%H:%M:%S)"
+          git push --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/hululuxi/x86-kmods-compile/openwrt-kmods.git"
