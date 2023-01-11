@@ -72,10 +72,10 @@ jobs:
       env: 
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: |
-        cd openwrt
-        mkdir kmod-packages
-        tar zxf kmod-packages.tar.gz -C kmod-packages
-        cd kmod-packages
+        mkdir -p openwrt/kmod-packages
+        cd ./bin/targets/x86/64/
+        tar zxf kmod-packages.tar.gz -C openwrt/kmod-packages
+        cd openwrt/kmod-packages
         git config --global user.email “hululuxi@yahoo.com”
         git config --global user.name “hululuxi”
         git init
