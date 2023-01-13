@@ -74,7 +74,9 @@ jobs:
         kmod_hash: $(cat kernel.txt | grep HASH | awk -F- '{print $2}' | awk '{print $1}' | md5sum | awk '{print $1}')
         kmodpkg_name: $(echo $(cat kernel.txt | grep HASH | awk -F- '{print $2}' | awk '{print $1}')-1-$(echo $kmod_hash))
       run: |
-        cd $kmodpkg_name
+        echo "kmod_hash: $kmod_hash"
+        echo "kmodpkg_name: $kmodpkg_name"
+        cd $kmodpkg_name/
         git config --global user.email “hululuxi@yahoo.com”
         git config --global user.name “hululuxi”
         git init
