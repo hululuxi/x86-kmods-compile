@@ -70,6 +70,9 @@ jobs:
 
     - name: Upload
       run: |
+        ls -a
+        cd ./include/
+        la -a
         export kmod_hash=$(cat ./include/kernel-5.10 | grep HASH | awk -F- '{print $2}' | awk '{print $1}' | md5sum | awk '{print $1}')
         export kmodpkg_name=$(echo $(cat ./include/kernel-5.10 | grep HASH | awk -F- '{print $2}' | awk '{print $1}')-1-$(echo $kmod_hash))
         echo "kmod_hash: $kmod_hash"
