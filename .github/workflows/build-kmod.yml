@@ -72,8 +72,8 @@ jobs:
       run: |
         cd ./openwrt/include/
         ls -a
-        export kmod_hash=$(cat ./include/kernel-5.10 | grep HASH | awk -F- '{print $2}' | awk '{print $1}' | md5sum | awk '{print $1}')
-        export kmodpkg_name=$(echo $(cat ./include/kernel-5.10 | grep HASH | awk -F- '{print $2}' | awk '{print $1}')-1-$(echo $kmod_hash))
+        export kmod_hash=$(cat kernel-5.10 | grep HASH | awk -F- '{print $2}' | awk '{print $1}' | md5sum | awk '{print $1}')
+        export kmodpkg_name=$(echo $(cat kernel-5.10 | grep HASH | awk -F- '{print $2}' | awk '{print $1}')-1-$(echo $kmod_hash))
         echo "kmod_hash: $kmod_hash"
         echo "kmodpkg_name: $kmodpkg_name"
         cd $kmodpkg_name
