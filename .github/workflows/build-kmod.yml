@@ -71,16 +71,14 @@ jobs:
     - name: Upload
       run: |
         cd ./openwrt/include/
-        ls -a
         export kmod_hash=$(cat kernel-5.10 | grep HASH | awk -F- '{print $2}' | awk '{print $1}' | md5sum | awk '{print $1}')
         export kmodpkg_name=$(echo $(cat kernel-5.10 | grep HASH | awk -F- '{print $2}' | awk '{print $1}')-1-$(echo $kmod_hash))
         echo "kmod_hash: $kmod_hash"
         echo "kmodpkg_name: $kmodpkg_name"
-        cd ./
+        cd /openwrt
         ls -a
-        cd ./openwrt
-        ls -a
-        cd ./$kmodpkg_name
+        echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+        cd /openwrt/$kmodpkg_name
         ls -a
         git config --global user.email “hululuxi@yahoo.com”
         git config --global user.name “hululuxi”
