@@ -75,13 +75,13 @@ jobs:
         export kmodpkg_name=$(echo $(cat kernel-5.10 | grep HASH | awk -F- '{print $2}' | awk '{print $1}')-1-$(echo $kmod_hash))
         echo "kmod_hash: $kmod_hash"
         echo "kmodpkg_name: $kmodpkg_name"
-        cd /home/build
+        cd $GITHUB_WORKSPACE
         ls -a
         echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-        cd /home/build/openwrt/
+        cd $GITHUB_WORKSPACE/openwrt
         ls -a
         echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-        cd /home/build/openwrt/$kmodpkg_name
+        cd $GITHUB_WORKSPACE/openwrt/$kmodpkg_name
         ls -a
         git config --global user.email “hululuxi@yahoo.com”
         git config --global user.name “hululuxi”
