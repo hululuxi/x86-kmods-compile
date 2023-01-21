@@ -76,8 +76,9 @@ jobs:
         echo "kmod_hash: $kmod_hash"
         echo "kmodpkg_name: $kmodpkg_name"
         echo ">>>>>>>>>>>/openwrt/bin>>>>>>>>>>>"
-        cd $(dirname "`find / -name '$kmodpkg_name'`")
+        cd $GITHUB_WORKSPACE/openwrt/
         ls -a
+        tar -xzf kmod-packages.tar.gz
         git config --global user.email “hululuxi@yahoo.com”
         git config --global user.name “hululuxi”
         git init
