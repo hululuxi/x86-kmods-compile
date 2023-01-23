@@ -336,4 +336,7 @@ else
     fi
 fi
 
+mkdir /openwrt/kmod-build
+cp -a $kmodpkg_name /openwrt/kmod-build
+
 # 很少有人会告诉你为什么要这样做，而是会要求你必须要这样做。
