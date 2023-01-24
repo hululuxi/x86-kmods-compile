@@ -67,7 +67,8 @@ jobs:
       id: compileopenwrt
       run: |
         chmod 777 $GITHUB_WORKSPACE/build.sh
-        bash <($GITHUB_WORKSPACE/build.sh) rc x86 kmod
+        # bash <($GITHUB_WORKSPACE/build.sh) rc x86 kmod
+        $GITHUB_WORKSPACE/build.sh rc x86 kmod
 
     - name: Upload
       run: |
