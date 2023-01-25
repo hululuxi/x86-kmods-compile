@@ -257,8 +257,8 @@ if [ "$ALL_KMODS" = y ]; then
         cp -a bin/packages/aarch64_generic/base/hostapd-common*.ipk $kmodpkg_name/
         cp -a bin/packages/aarch64_generic/base/*iw*.ipk $kmodpkg_name/
         cp -a bin/packages/aarch64_generic/base/wireless-regdb*.ipk $kmodpkg_name/
+        cp -a $kmodpkg_name/ /openwrt/kmod-packages
         tar zcf kmod-packages.tar.gz $kmodpkg_name
-        cp -a $kmodpkg_name /openwrt/
         echo $kmodpkg_name > hash.txt
         echo -e "${GREEN_COLOR} Build success! ${RES}"
         echo -e " Build time: ${GREEN_COLOR}$(( SEC / 3600 ))h,$(( (SEC % 3600) / 60 ))m,$(( (SEC % 3600) % 60 ))s${RES}"
@@ -336,6 +336,5 @@ else
         exit 1
     fi
 fi
-
 
 # 很少有人会告诉你为什么要这样做，而是会要求你必须要这样做。
