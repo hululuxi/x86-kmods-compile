@@ -81,7 +81,7 @@ jobs:
         cd $GITHUB_WORKSPACE/openwrt/
         ls -a
         echo ">>>>>>>>>>>/openwrt/$kmodpkg_name>>>>>>>>>>>"
-        cd $GITHUB_WORKSPACE/openwrt/$kmodpkg_name
+        cd $GITHUB_WORKSPACE/openwrt/kmod-build
         ls -a
         git config --global user.email “hululuxi@yahoo.com”
         git config --global user.name “hululuxi”
