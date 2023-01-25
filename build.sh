@@ -257,7 +257,7 @@ if [ "$ALL_KMODS" = y ]; then
         cp -a bin/packages/aarch64_generic/base/hostapd-common*.ipk $kmodpkg_name/
         cp -a bin/packages/aarch64_generic/base/*iw*.ipk $kmodpkg_name/
         cp -a bin/packages/aarch64_generic/base/wireless-regdb*.ipk $kmodpkg_name/
-        cp -a $kmodpkg_name/ /openwrt/kmod-packages
+        cp -a $kmodpkg_name/ /openwrt/kmod-build
         tar zcf kmod-packages.tar.gz $kmodpkg_name
         echo $kmodpkg_name > hash.txt
         echo -e "${GREEN_COLOR} Build success! ${RES}"
