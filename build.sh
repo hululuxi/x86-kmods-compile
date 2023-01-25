@@ -258,6 +258,8 @@ if [ "$ALL_KMODS" = y ]; then
         cp -a bin/packages/aarch64_generic/base/*iw*.ipk $kmodpkg_name/
         cp -a bin/packages/aarch64_generic/base/wireless-regdb*.ipk $kmodpkg_name/
         tar zcf kmod-packages.tar.gz $kmodpkg_name
+        mkdir /openwrt/kmod-build
+        cp -a $kmodpkg_name /openwrt/kmod-build
         echo $kmodpkg_name > hash.txt
         echo -e "${GREEN_COLOR} Build success! ${RES}"
         echo -e " Build time: ${GREEN_COLOR}$(( SEC / 3600 ))h,$(( (SEC % 3600) / 60 ))m,$(( (SEC % 3600) % 60 ))s${RES}"
@@ -334,8 +336,6 @@ else
         fi
         exit 1
     fi
-mkdir /openwrt/kmod-build
-cp -a $kmodpkg_name /openwrt/kmod-build
 fi
 
 
