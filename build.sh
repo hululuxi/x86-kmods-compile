@@ -207,12 +207,13 @@ rm -rf ../master
 if [ "$version" = "rc" ] || [ "$version" = "snapshots-22.03" ]; then
     if [ "$soc" = "x86" ]; then
         curl -s https://$mirror/openwrt/22-config-musl-x86 > .config
+        ALL_KMODS=y
     elif [ "$soc" = "r5s" ] && [ "$3" != "kmod" ]; then
         curl -s https://$mirror/openwrt/22-config-musl-r5s > .config
         [ "$version" = "rc" ] && echo 'CONFIG_PACKAGE_luci-app-ota=y' >> .config
         [ "$USE_GLIBC" = "y" ] && curl -s https://$mirror/openwrt/config-glibc >> .config
     elif [ "$soc" = "r5s" ] && [ "$3" = "kmod" ]; then
-        ALL_KMODS=y
+        ALL_KMODS=n
     else
         curl -s https://$mirror/openwrt/22-config-musl-r4s > .config
         [ "$version" = "rc" ] && echo 'CONFIG_PACKAGE_luci-app-ota=y' >> .config
