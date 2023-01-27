@@ -237,7 +237,7 @@ if [ "$ALL_KMODS" = y ]; then
     sed -i '/samba4/d;/qbittorrent/d;/mosdns/d;/alist/d;/netdata/d;/vim/d;/ttyd/d;/coreutils/d;/procps-ng/d;/PACKAGE_shadow/d;/coremark/d;/aria2/d' .config
     make defconfig
     make -j$cores
-    [ $? -eq 0 ] && cp -a bin/targets/x86/64/packages kmod && rm -f kmod/Packages* && bash 99_clean_build_cache.sh || true
+    [ $? -eq 0 ] && bash 99_clean_build_cache.sh || true
     echo -e "\r\n${GREEN_COLOR}Building OpenWrt With All Kmods ...${RES}\r\n"
     rm -f package/libs/mbedtls/patches/100-Implements-AES-and-GCM-with-ARMv8-Crypto-Extensions.patch
     git checkout package/libs/mbedtls/Makefile
