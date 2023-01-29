@@ -249,7 +249,8 @@ if [ "$ALL_KMODS" = y ]; then
         start_seconds=$(date --date="$starttime" +%s);
         end_seconds=$(date --date="$endtime" +%s);
         SEC=$((end_seconds-start_seconds));
-        mkdir -p $kmodpkg_name
+        echo "$kmodpkg_name"
+        mkdir $kmodpkg_name
         echo "yayayya"
         cp -a bin/targets/x86/64/packages $kmodpkg_name
         \cp -a kmod/*.ipk $kmodpkg_name/ || true
