@@ -60,7 +60,6 @@ jobs:
         sudo -E apt-cache policy libssl1.0-dev
         sudo -E apt-get install -y libssl1.0-dev kmod
         sudo -E apt-get clean -y
-        git config --global user.name 'GitHub Actions' && git config --global user.email 'noreply@github.com'
         df -h
 
     - name: Compile Openwrt
