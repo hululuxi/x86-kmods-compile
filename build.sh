@@ -85,9 +85,11 @@ elif [ "$soc" = "r5s" ]; then
     if [ "$3" = "kmod" ]; then
         echo -e "${GREEN_COLOR}Model: nanopi-r5s - kmod${RES}\r\n"
         curl -s https://$mirror/tags/kernel-6.1 > kernel.txt
-        cat kernel.txt | grep HASH | awk -F- '{print $2}' | awk '{print $1}' > kmod_verion.txt
-        kmod_hash=$(cat kernel.txt | grep HASH | awk -F- '{print $2}' | awk '{print $1}' | md5sum | awk '{print $1}')
-        kmodpkg_name=$(echo $(cat kernel.txt | grep HASH | awk -F- '{print $2}' | awk '{print $1}')-1-$(echo $kmod_hash))
+        cat ./include/kernel-5.10 | grep HASH | awk -F- '{print $2}' | awk '{print $1}' > kmod_verion.txt
+        export kmod_hash=$(cat ./include/kernel-5.10 | grep HASH | awk -F- '{print $2}' | awk '{print $1}' | md5sum | awk '{print $1}')
+        export kmodpkg_name=$(echo $(cat ./include/kernel-5.10 | grep HASH | awk -F- '{print $2}' | awk '{print $1}')-1-$(echo $kmod_hash))
+        echo "kmod_hash: $kmod_hash"
+        echo "kmodpkg_name: $kmodpkg_name"
         echo -e "${GREEN_COLOR}kernel version: $kmodpkg_name ${RES}\r\n"
         rm -f kernel.txt
     else
