@@ -65,7 +65,7 @@ jobs:
     - name: Compile Openwrt
       id: compileopenwrt
       run: |
-        mkdir -p $GITHUB_WORKSPACE/openwrt/.github/openwrt/kmod-build/
+        mkdir -p $GITHUB_WORKSPACE/openwrt/kmod-build/
         chmod 777 $GITHUB_WORKSPACE/build.sh
         # bash <($GITHUB_WORKSPACE/build.sh) rc x86 kmod
         $GITHUB_WORKSPACE/build.sh rc x86 kmod
@@ -83,8 +83,8 @@ jobs:
         echo ">>>>>>>>>>>/openwrt/.github>>>>>>>>>>>"
         cd $GITHUB_WORKSPACE/openwrt/.github
         ls -a
-        echo ">>>>>>>>>>>/openwrt/.github/openwrt/kmod-build>>>>>>>>>>>"
-        cd $GITHUB_WORKSPACE/openwrt/.github/openwrt/kmod-build
+        echo ">>>>>>>>>>>/openwrt/kmod-build>>>>>>>>>>>"
+        cd $GITHUB_WORKSPACE/openwrt/kmod-build
         ls -a
         git config --global user.email “hululuxi@yahoo.com”
         git config --global user.name “hululuxi”
