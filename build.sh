@@ -91,6 +91,7 @@ if [ "$soc" = "x86" ]; then
     else
         echo -e "${GREEN_COLOR}Model: x86_64${RES}\r\n"
         [ "$1" = "rc" ] && model="x86_64"
+    fi
 elif [ "$soc" = "r5s" ]; then
     if [ "$3" = "kmod" ]; then
         echo -e "${GREEN_COLOR}Model: nanopi-r5s - kmod${RES}\r\n"
