@@ -82,12 +82,6 @@ echo -e "\r\n${GREEN_COLOR}Building $branch${RES}"
 if [ "$soc" = "x86" ]; then
     if [ "$3" = "kmod" ]; then
         echo -e "${GREEN_COLOR}Model: x86_64 - kmod${RES}\r\n"
-        cat /openwrt/include/kernel-5.10 | grep HASH | awk -F- '{print $2}' | awk '{print $1}' > kmod_verion.txt
-        export kmod_hash=$(cat /openwrt/include/kernel-5.10 | grep HASH | awk -F- '{print $2}' | awk '{print $1}' | md5sum | awk '{print $1}')
-        export kmodpkg_name=$(echo $(cat /openwrt/include/kernel-5.10 | grep HASH | awk -F- '{print $2}' | awk '{print $1}')-1-$(echo $kmod_hash))
-        echo "kmod_hash: $kmod_hash"
-        echo "kmodpkg_name: $kmodpkg_name"
-        echo -e "${GREEN_COLOR}kernel version: $kmodpkg_name ${RES}\r\n"
     else
         echo -e "${GREEN_COLOR}Model: x86_64${RES}\r\n"
         [ "$1" = "rc" ] && model="x86_64"
@@ -262,6 +256,12 @@ if [ "$ALL_KMODS" = y ]; then
         start_seconds=$(date --date="$starttime" +%s);
         end_seconds=$(date --date="$endtime" +%s);
         SEC=$((end_seconds-start_seconds));
+        cat /openwrt/include/kernel-5.10 | grep HASH | awk -F- '{print $2}' | awk '{print $1}' > kmod_verion.txt
+        export kmod_hash=$(cat /openwrt/include/kernel-5.10 | grep HASH | awk -F- '{print $2}' | awk '{print $1}' | md5sum | awk '{print $1}')
+        export kmodpkg_name=$(echo $(cat /openwrt/include/kernel-5.10 | grep HASH | awk -F- '{print $2}' | awk '{print $1}')-1-$(echo $kmod_hash))
+        echo "kmod_hash: $kmod_hash"
+        echo "kmodpkg_name: $kmodpkg_name"
+        echo -e "${GREEN_COLOR}kernel version: $kmodpkg_name ${RES}\r\n"
         cp -a bin/targets/x86/64/packages $kmodpkg_name
         \cp -a kmod/*.ipk $kmodpkg_name/ || true
         rm -f $kmodpkg_name/Packages*
